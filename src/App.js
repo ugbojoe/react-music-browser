@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Route, Switch } from 'react-router-dom';
+import Navbar from './Navbar';
+import Home from './Home';
+import ArtistList from './artists/ArtistList';
+import About from './About';
+
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <main>
+        <Navbar />
+        <h1>React Music Browser</h1>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/artists" component={ArtistList} />
+          <Route path="/about" component={About} />
+        </Switch>
+      </main>
     );
   }
 }
